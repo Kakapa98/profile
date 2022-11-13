@@ -103,7 +103,7 @@ a.active,a:hover{
 
 .home{
     width: 100%;
-    hight: 500px;
+    hight: 400px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

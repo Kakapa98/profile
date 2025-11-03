@@ -24,36 +24,42 @@ export const blogCategories: BlogCategory[] = [
     slug: 'technology',
     description: 'Software development, tools, and industry insights',
     color: 'blue'
+  },
+  {
+    name: 'Personal',
+    slug: 'personal',
+    description: 'Personal stories, experiences, and reflections',
+    color: 'green'
   }
 ]
 
-export const blogPosts: BlogPost[] = [
-  // Add your blog posts here
-  // Example:
-  // {
-  //   id: '1',
-  //   title: 'Your Blog Post Title',
-  //   excerpt: 'A brief summary of your post',
-  //   content: `Your full blog post content here...`,
-  //   author: 'Mpho Mofokeng',
-  //   date: '2025-01-20',
-  //   readTime: '5 min read',
-  //   category: 'Quality Assurance',
-  //   tags: ['Tag1', 'Tag2'],
-  //   published: true
-  // }
-]
+// Helper functions to get posts from localStorage
+export const getBlogPosts = (): BlogPost[] => {
+  if (typeof window === 'undefined') return []
+  const storedPosts = localStorage.getItem('blog_posts')
+  if (storedPosts) {
+    try {
+      return JSON.parse(storedPosts)
+    } catch (error) {
+      console.error('Error loading posts:', error)
+      return []
+    }
+  }
+  return []
+}
 
 // Helper function to get posts by category
 export const getPostsByCategory = (category: string): BlogPost[] => {
-  return blogPosts.filter(post =>
+  const posts = getBlogPosts()
+  return posts.filter(post =>
     post.category.toLowerCase() === category.toLowerCase() && post.published
   )
 }
 
 // Helper function to get recent posts
 export const getRecentPosts = (limit: number = 3): BlogPost[] => {
-  return blogPosts
+  const posts = getBlogPosts()
+  return posts
     .filter(post => post.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit)
@@ -61,5 +67,9 @@ export const getRecentPosts = (limit: number = 3): BlogPost[] => {
 
 // Helper function to get post by slug
 export const getPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogPosts.find(post => post.slug === slug && post.published)
+  const posts = getBlogPosts()
+  return posts.find(post => post.slug === slug && post.published)
 }
+
+// For static generation, we need to export an empty array initially
+export const blogPosts: BlogPost[] = []

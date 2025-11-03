@@ -11,9 +11,16 @@ import ParticleSystem from '@/components/ParticleSystem'
 import MobileMenu from '@/components/MobileMenu'
 import BlogCard from '@/components/BlogCard'
 import { getRecentPosts } from '@/data/blog-posts'
+import { BlogPost } from '@/types/blog'
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [recentPosts, setRecentPosts] = useState<BlogPost[]>([])
+
+  useEffect(() => {
+    // Load recent posts from localStorage
+    setRecentPosts(getRecentPosts(3))
+  }, [])
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -310,7 +317,7 @@ export default function Home() {
       </motion.section>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 2.6 }}
@@ -332,8 +339,8 @@ export default function Home() {
           <div className="p-2 rounded-full border border-slate-300 dark:border-slate-600">
             <ArrowDown className="w-5 h-5" />
           </div>
-        </motion.div>
-      </motion.div>
+        </motion.div> */}
+      {/* </motion.div> */}
 
       {/* About Section */}
       <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
@@ -695,7 +702,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {getRecentPosts(3).map((post, index) => (
+            {recentPosts.map((post, index) => (
               <BlogCard key={post.id} post={post} index={index} />
             ))}
           </div>
@@ -835,6 +842,11 @@ export default function Home() {
           </p>
           <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">
             Built with Next.js, TypeScript, and Tailwind CSS
+          </p>
+          <p className="text-xs text-slate-400 dark:text-slate-600 mt-4">
+            <a href="/admin" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              Admin
+            </a>
           </p>
         </div>
       </footer>

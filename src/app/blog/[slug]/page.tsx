@@ -1,4 +1,4 @@
-import { getPostBySlug, blogPosts } from '@/data/blog-posts'
+import { getPostBySlug } from '@/data/blog-posts'
 import { notFound } from 'next/navigation'
 import BlogPostClient from './BlogPostClient'
 
@@ -17,12 +17,5 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return <BlogPostClient post={post} />
-}
-
-// Generate static params for all blog posts
-export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }))
 }
 

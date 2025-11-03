@@ -3,15 +3,22 @@
 import { motion } from 'framer-motion'
 import { BookOpen, Search, Filter } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BlogCard from '@/components/BlogCard'
-import { blogPosts, blogCategories } from '@/data/blog-posts'
+import { blogCategories, getBlogPosts } from '@/data/blog-posts'
+import { BlogPost } from '@/types/blog'
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchQuery, setSearchQuery] = useState<string>('')
+  const [posts, setPosts] = useState<BlogPost[]>([])
 
-  const filteredPosts = blogPosts.filter(post => {
+  useEffect(() => {
+    // Load posts from localStorage
+    setPosts(getBlogPosts())
+  }, [])
+
+  const filteredPosts = posts.filter(post => {
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||

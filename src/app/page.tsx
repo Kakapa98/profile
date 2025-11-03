@@ -263,8 +263,9 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Link
-                  href="/backup-2022-site/assets/Resume-Mpho-Mofokeng-2.pdf"
+                <a
+                  href="/Mpho-Mofokeng-CV.pdf"
+                  download="Mpho-Mofokeng-CV.pdf"
                   className="group border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center backdrop-blur-sm"
                 >
                   <span>Download Resume</span>
@@ -275,7 +276,7 @@ export default function Home() {
                   >
                     <ArrowDown className="w-5 h-5" />
                   </motion.div>
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
 
@@ -339,8 +340,8 @@ export default function Home() {
           <div className="p-2 rounded-full border border-slate-300 dark:border-slate-600">
             <ArrowDown className="w-5 h-5" />
           </div>
-        </motion.div> */}
-      {/* </motion.div> */}
+        </motion.div>
+      </motion.div> */}
 
       {/* About Section */}
       <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">

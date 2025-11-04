@@ -10,6 +10,7 @@ import FloatingElements from '@/components/FloatingElements'
 import ParticleSystem from '@/components/ParticleSystem'
 import MobileMenu from '@/components/MobileMenu'
 import BlogCard from '@/components/BlogCard'
+import { ThemeToggle } from '@/components/ThemeToggle'
 import { getRecentPosts } from '@/data/blog-posts'
 import { BlogPost } from '@/types/blog'
 
@@ -31,6 +32,9 @@ export default function Home() {
 
   return (
     <main ref={containerRef} className="relative min-h-screen overflow-hidden">
+      {/* Theme Toggle */}
+      <ThemeToggle />
+
       {/* Animated Background */}
       <AnimatedBackground />
 
@@ -45,7 +49,7 @@ export default function Home() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-0 w-full bg-white/10 dark:bg-slate-900/10 backdrop-blur-xl z-50 border-b border-white/20 dark:border-slate-700/20"
+        className="fixed top-0 w-full bg-white/90 dark:bg-primary/90 backdrop-blur-xl z-40 border-b border-slate-200 dark:border-secondary/20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
@@ -56,7 +60,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+              <Link href="/" className="text-2xl font-bold text-primary dark:text-secondary hover:text-primary/80 dark:hover:text-secondary-400 transition-colors">
                 Mpho (Alphios) Mofokeng
               </Link>
             </motion.div>
@@ -77,10 +81,10 @@ export default function Home() {
                 >
                   <Link
                     href={`#${item.toLowerCase()}`}
-                    className="relative text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 group"
+                    className="relative text-slate-700 dark:text-secondary hover:text-primary dark:hover:text-secondary-400 transition-all duration-300 group font-medium"
                   >
                     {item}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary dark:bg-secondary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </motion.div>
               ))}
@@ -115,9 +119,9 @@ export default function Home() {
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                 >
-                  <MapPin className="w-4 h-4 text-primary-600 mr-2" />
+                  <MapPin className="w-4 h-4 text-primary dark:text-secondary mr-2" />
                 </motion.div>
-                <span className="text-slate-700 dark:text-slate-300 font-medium">Johannesburg, South Africa</span>
+                <span className="text-slate-700 dark:text-secondary-300 font-medium">Johannesburg, South Africa</span>
               </motion.div>
             </motion.div>
 
@@ -138,7 +142,7 @@ export default function Home() {
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
-                  className="text-slate-900 dark:text-white"
+                  className="text-slate-900 dark:text-secondary"
                 >
                   Hi, I&apos;m{' '}
                 </motion.span>
@@ -148,11 +152,11 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 1.0 }}
                   className="relative inline-block"
                 >
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-purple-600 to-secondary-600 animate-pulse">
+                  <span className="text-primary dark:text-secondary font-extrabold animate-pulse drop-shadow-[0_0_15px_rgba(242,253,125,0.5)]">
                     Kahuna
                   </span>
                   <motion.div
-                    className="absolute -inset-1 bg-gradient-to-r from-primary-600/20 to-secondary-600/20 rounded-lg blur-lg"
+                    className="absolute -inset-1 bg-primary/10 dark:bg-secondary/20 rounded-lg blur-lg"
                     animate={{
                       scale: [1, 1.1, 1],
                       opacity: [0.5, 0.8, 0.5]
@@ -185,7 +189,7 @@ export default function Home() {
                   "WeThinkCode_ Educator",
                   "Quality-Driven Technologist"
                 ]}
-                className="text-2xl md:text-4xl text-slate-700 dark:text-slate-300 font-semibold"
+                className="text-2xl md:text-4xl text-slate-700 dark:text-secondary-200 font-semibold"
               />
             </motion.div>
 
@@ -196,16 +200,16 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 1.8 }}
               className="mb-12"
             >
-              <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-slate-600 dark:text-secondary-200 max-w-4xl mx-auto leading-relaxed">
                 A passionate technologist, mentor, and quality-driven software professional committed to building{' '}
                 <motion.span
-                  className="font-semibold text-primary-600 relative"
+                  className="font-semibold text-primary dark:text-secondary relative"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   innovative solutions
                   <motion.span
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-600"
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary dark:bg-secondary"
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.8, delay: 2.2 }}
@@ -213,13 +217,13 @@ export default function Home() {
                 </motion.span>
                 {' '}and empowering the next generation through{' '}
                 <motion.span
-                  className="font-semibold text-secondary-600 relative"
+                  className="font-semibold text-primary dark:text-secondary relative"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   education & blockchain
                   <motion.span
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-secondary-600"
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary dark:bg-secondary"
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.8, delay: 2.4 }}
@@ -244,9 +248,9 @@ export default function Home() {
               >
                 <Link
                   href="#contact"
-                  className="group relative bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
+                  className="group relative bg-primary dark:bg-secondary hover:bg-primary/90 dark:hover:bg-secondary-400 text-white dark:text-primary px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
                 >
-                  <span className="relative z-10">Get In Touch</span>
+                  <span className="relative z-10 font-bold">Get In Touch</span>
                   <motion.div
                     className="ml-2 relative z-10"
                     animate={{ x: [0, 4, 0] }}
@@ -254,7 +258,6 @@ export default function Home() {
                   >
                     <Mail className="w-5 h-5" />
                   </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-primary-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Link>
               </motion.div>
 
@@ -266,7 +269,7 @@ export default function Home() {
                 <a
                   href="/Mpho-Mofokeng-CV.pdf"
                   download="Mpho-Mofokeng-CV.pdf"
-                  className="group border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center backdrop-blur-sm"
+                  className="group border-2 border-primary dark:border-secondary text-primary dark:text-secondary hover:bg-primary dark:hover:bg-secondary hover:text-white dark:hover:text-primary px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center backdrop-blur-sm"
                 >
                   <span>Download Resume</span>
                   <motion.div
@@ -304,11 +307,11 @@ export default function Home() {
                     href={href}
                     target={href.startsWith('http') ? "_blank" : undefined}
                     rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
-                    className="group relative p-3 bg-white/10 dark:bg-slate-800/10 backdrop-blur-sm rounded-full border border-white/20 dark:border-slate-700/20 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300"
+                    className="group relative p-3 bg-slate-100 dark:bg-primary-700/50 backdrop-blur-sm rounded-full border border-slate-300 dark:border-secondary/30 text-primary dark:text-secondary hover:bg-primary dark:hover:bg-secondary hover:text-white dark:hover:text-primary transition-all duration-300"
                     aria-label={label}
                   >
                     <Icon className="w-6 h-6" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-secondary-600/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-primary/10 dark:bg-secondary/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </Link>
                 </motion.div>
               ))}
@@ -327,10 +330,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-secondary mb-4">
               About Me
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-primary dark:bg-secondary mx-auto"></div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -340,23 +343,23 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-secondary mb-4">
                 Mpho Alphios Mofokeng
               </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
-                Affectionately known as <span className="font-semibold text-primary-600">Kahuna</span> or <span className="font-semibold text-primary-600">Kakapa</span>
+              <p className="text-lg text-slate-700 dark:text-secondary-200 mb-4">
+                Affectionately known as <span className="font-semibold text-primary dark:text-secondary">Kahuna</span> or <span className="font-semibold text-primary dark:text-secondary">Kakapa</span>
               </p>
-              <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+              <p className="text-slate-600 dark:text-secondary-200 mb-4 leading-relaxed">
                 I&apos;m a passionate technologist, mentor, and quality-driven software professional based in South Africa.
                 With a solid foundation in software engineering, testing, and education, I&apos;m committed to building
                 innovative, reliable, and community-oriented technology solutions while empowering others to do the same.
               </p>
-              <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                I currently serve as a <span className="font-semibold text-primary-600">Student Performance Manager</span> and{' '}
-                <span className="font-semibold text-primary-600">QA-Elective Lead</span> at WeThinkCode_, where I guide
+              <p className="text-slate-600 dark:text-secondary-200 mb-4 leading-relaxed">
+                I currently serve as a <span className="font-semibold text-primary dark:text-secondary">Student Performance Manager</span> and{' '}
+                <span className="font-semibold text-primary dark:text-secondary">QA-Elective Lead</span> at WeThinkCode_, where I guide
                 students through rigorous technical training programs and help shape the next generation of software developers and testers.
               </p>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-slate-600 dark:text-secondary-200 leading-relaxed">
                 My work focuses on fostering excellence through structured mentorship, agile methodologies, and real-world
                 testing practices that bridge the gap between education and industry standards.
               </p>
@@ -369,9 +372,9 @@ export default function Home() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">💼 Professional Focus</h4>
-                <ul className="space-y-2 text-slate-600 dark:text-slate-400">
+              <div className="bg-slate-50 dark:bg-primary-700/50 border border-slate-200 dark:border-secondary/20 p-6 rounded-xl">
+                <h4 className="text-xl font-bold text-slate-900 dark:text-secondary mb-3">💼 Professional Focus</h4>
+                <ul className="space-y-2 text-slate-600 dark:text-secondary-200">
                   <li>• Oversee student progress across cohorts</li>
                   <li>• Design and lead Quality Assurance Elective</li>
                   <li>• Mentor on manual testing, automation, and API validation</li>
@@ -379,22 +382,22 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">🔗 Blockchain & Innovation</h4>
-                <p className="text-slate-600 dark:text-slate-400 mb-3">
+              <div className="bg-slate-50 dark:bg-primary-700/50 border border-slate-200 dark:border-secondary/20 p-6 rounded-xl">
+                <h4 className="text-xl font-bold text-slate-900 dark:text-secondary mb-3">🔗 Blockchain & Innovation</h4>
+                <p className="text-slate-600 dark:text-secondary-200 mb-3">
                   As part of the Africa Blockchain Club (ABC) community, I contribute to initiatives that promote
                   blockchain literacy and technical experimentation.
                 </p>
-                <ul className="space-y-2 text-slate-600 dark:text-slate-400">
+                <ul className="space-y-2 text-slate-600 dark:text-secondary-200">
                   <li>• Developing smart contract prototypes and DApps</li>
                   <li>• Exploring tokenization and digital identity</li>
                   <li>• Supporting knowledge-sharing through workshops</li>
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-6 rounded-xl text-white">
+              <div className="bg-primary dark:bg-secondary p-6 rounded-xl text-white dark:text-primary border-2 border-primary dark:border-secondary">
                 <h4 className="text-xl font-bold mb-2">🌟 Philosophy</h4>
-                <p className="italic">
+                <p className="italic font-medium">
                   &quot;Technology should not only solve problems — it should elevate people.&quot;
                 </p>
               </div>

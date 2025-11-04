@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Lock, Eye, EyeOff } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function AdminLoginPage() {
   const [password, setPassword] = useState('')
@@ -113,12 +114,12 @@ export default function AdminLoginPage() {
 
           {/* Back to Home */}
           <div className="mt-6 text-center">
-            <a
+            <Link
               href="/"
               className="text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
             >
               ← Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </motion.div>

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, BookOpen } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import BlogEditor from '@/components/BlogEditor'
 import { BlogPost } from '@/types/blog'
 
@@ -105,13 +106,13 @@ export default function AdminDashboard() {
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <a
+              <Link
                 href="/"
                 className="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors flex items-center gap-2"
               >
                 <BookOpen className="w-4 h-4" />
                 View Site
-              </a>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors flex items-center gap-2"

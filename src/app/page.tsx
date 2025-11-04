@@ -60,8 +60,9 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link href="/" className="text-2xl font-bold text-primary dark:text-secondary hover:text-primary/80 dark:hover:text-secondary-400 transition-colors">
-                Mpho (Alphios) Mofokeng
+              <Link href="/" className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-secondary hover:text-primary/80 dark:hover:text-secondary-400 transition-colors">
+                <span className="hidden sm:inline">Mpho (Alphios) Mofokeng</span>
+                <span className="sm:hidden">Mpho (Alphios) Mofokeng</span>
               </Link>
             </motion.div>
 
@@ -342,6 +343,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="flex flex-col justify-center items-center text-center"
             >
               <h3 className="text-2xl font-bold text-slate-900 dark:text-secondary mb-4">
                 Mpho Alphios Mofokeng
@@ -434,7 +436,7 @@ export default function Home() {
               <div className="text-3xl mb-4">💻</div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Programming & Development</h3>
               <div className="flex flex-wrap gap-2">
-                {['Python', 'Java', 'JavaScript', 'SQL'].map((skill) => (
+                {['Python', 'TypeScript', 'JavaScript', 'Java', 'SQL'].map((skill) => (
                   <span key={skill} className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium">
                     {skill}
                   </span>
@@ -489,9 +491,9 @@ export default function Home() {
               className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="text-3xl mb-4">🗄️</div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Databases</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Databases & ORM</h3>
               <div className="flex flex-wrap gap-2">
-                {['SQLite', 'MySQL'].map((skill) => (
+                {['SQLite', 'MySQL', 'Prisma', 'PostgreSQL'].map((skill) => (
                   <span key={skill} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">
                     {skill}
                   </span>
@@ -510,8 +512,27 @@ export default function Home() {
               <div className="text-3xl mb-4">🌐</div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Web & API Design</h3>
               <div className="flex flex-wrap gap-2">
-                {['RESTful API', 'Flask', 'Express.js'].map((skill) => (
+                {['React', 'Node.js', 'Express.js', 'RESTful API', 'Flask'].map((skill) => (
                   <span key={skill} className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* AI & Integration */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="text-3xl mb-4">🤖</div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">AI & Integration</h3>
+              <div className="flex flex-wrap gap-2">
+                {['OpenAI API', 'AI Integration', 'JWT Auth'].map((skill) => (
+                  <span key={skill} className="px-3 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">
                     {skill}
                   </span>
                 ))}
@@ -522,15 +543,34 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
               viewport={{ once: true }}
               className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="text-3xl mb-4">⛓️</div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Blockchain</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Blockchain & Web3</h3>
               <div className="flex flex-wrap gap-2">
-                {['Ethereum', 'Solidity', 'Smart Contracts'].map((skill) => (
+                {['Celo', 'Ethereum', 'Solidity', 'Smart Contracts', 'Web3.js'].map((skill) => (
                   <span key={skill} className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Frontend Frameworks */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="text-3xl mb-4">⚛️</div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Frontend Frameworks</h3>
+              <div className="flex flex-wrap gap-2">
+                {['React', 'Next.js', 'Tailwind CSS', 'Vite'].map((skill) => (
+                  <span key={skill} className="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-medium">
                     {skill}
                   </span>
                 ))}
@@ -542,9 +582,9 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
             viewport={{ once: true }}
-            className="mt-12 bg-gradient-to-r from-primary-600 to-secondary-600 p-8 rounded-xl text-white"
+            className="mt-12 bg-gradient-to-r from-primary to-secondary p-8 rounded-xl text-white dark:text-primary shadow-xl"
           >
             <h3 className="text-2xl font-bold mb-4 text-center">Professional Skills</h3>
             <div className="flex flex-wrap justify-center gap-3">
@@ -575,11 +615,95 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Library System ORM */}
+            {/* ScensPack */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="text-4xl">🔍</div>
+                <Sparkles className="w-6 h-6 text-primary-600 dark:text-secondary" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                ScensPack
+              </h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                AI-powered test scenario management platform with OpenAI integration. Features role-based access,
+                advanced search, and automated test scenario generation for developers and testers.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {['React', 'TypeScript', 'Node.js', 'Prisma', 'OpenAI API', 'JWT'].map((tech) => (
+                  <span key={tech} className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                  <Code className="w-4 h-4 mr-2" />
+                  <span>Full-Stack + AI</span>
+                </div>
+                <a
+                  href="https://github.com/Kakapa98/scenspack"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-600 dark:text-secondary hover:text-primary-700 dark:hover:text-secondary/80 transition-colors"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Blocksole */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="text-4xl">👟</div>
+                <Sparkles className="w-6 h-6 text-secondary-600 dark:text-secondary" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                Blocksole
+              </h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                Decentralized sneaker marketplace on Celo blockchain. Secure platform for buying, selling, and trading
+                sneakers with smart contracts, eliminating counterfeits and reducing fees.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {['Celo', 'Solidity', 'React', 'Web3.js', 'Smart Contracts', 'IPFS'].map((tech) => (
+                  <span key={tech} className="px-3 py-1 bg-secondary-100 dark:bg-secondary-900/30 text-secondary-700 dark:text-secondary-300 rounded-full text-xs font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                  <Code className="w-4 h-4 mr-2" />
+                  <span>Blockchain DApp</span>
+                </div>
+                <a
+                  href="https://github.com/Africas-Blockchain-Club/Blocksole"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-secondary-600 dark:text-secondary hover:text-secondary-700 dark:hover:text-secondary/80 transition-colors"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Library System ORM */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
               className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2"
             >
@@ -607,11 +731,11 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Blockchain Initiatives */}
+            {/* Africa Blockchain Club */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
               className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2"
             >
@@ -620,14 +744,14 @@ export default function Home() {
                 <Sparkles className="w-6 h-6 text-secondary-600" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                Blockchain Initiatives (ABC)
+                Africa Blockchain Club (ABC)
               </h3>
               <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                Contributing to smart contract prototypes and educational blockchain sessions across African developer
-                communities. Focus on promoting blockchain literacy, tokenization, and decentralized application development.
+                Active contributor to Africa&apos;s Blockchain Club, developing DApps like Blocksole and leading educational blockchain
+                sessions. Focus on promoting blockchain literacy, Web3 adoption, and decentralized application development across African developer communities.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {['Ethereum', 'Solidity', 'Smart Contracts', 'DApps', 'Web3'].map((tech) => (
+                {['Celo', 'Ethereum', 'Solidity', 'Smart Contracts', 'DApps', 'Web3'].map((tech) => (
                   <span key={tech} className="px-3 py-1 bg-secondary-100 dark:bg-secondary-900/30 text-secondary-700 dark:text-secondary-300 rounded-full text-xs font-medium">
                     {tech}
                   </span>
@@ -635,7 +759,7 @@ export default function Home() {
               </div>
               <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
                 <Code className="w-4 h-4 mr-2" />
-                <span>Community Initiative</span>
+                <span>Community Leadership</span>
               </div>
             </motion.div>
           </div>

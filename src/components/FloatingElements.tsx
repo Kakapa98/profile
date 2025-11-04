@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Code, Database, Smartphone, Shield, Zap, Cpu } from 'lucide-react'
+import { useMemo } from 'react'
 
 const floatingIcons = [
   { Icon: Code, delay: 0, x: '10%', y: '20%' },
@@ -11,6 +12,14 @@ const floatingIcons = [
   { Icon: Zap, delay: 2, x: '50%', y: '10%' },
   { Icon: Cpu, delay: 2.5, x: '90%', y: '45%' },
 ]
+
+// Pre-generated particle positions to avoid hydration mismatch
+const particlePositions = Array.from({ length: 20 }, (_, i) => ({
+  left: [38.96, 24.51, 3.78, 44.00, 88.98, 70.80, 94.40, 87.29, 83.07, 90.27, 21.32, 76.30, 63.89, 28.09, 15.94, 37.76, 28.15, 27.07, 3.66, 9.75][i],
+  top: [53.86, 42.84, 3.18, 7.42, 22.79, 71.07, 30.12, 80.87, 46.86, 81.30, 1.76, 7.24, 56.37, 6.45, 19.66, 44.07, 9.03, 82.80, 84.55, 4.69][i],
+  duration: [4.5, 3.2, 2.8, 4.1, 3.7, 2.5, 4.8, 3.4, 2.9, 4.2, 3.1, 2.7, 4.6, 3.5, 2.6, 4.3, 3.8, 2.4, 4.7, 3.3][i],
+  delay: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 0.2, 0.7, 1.2, 1.7, 2.2, 2.7, 3.2, 3.7, 4.2, 4.7][i]
+}))
 
 export default function FloatingElements() {
   return (
@@ -42,13 +51,13 @@ export default function FloatingElements() {
       ))}
 
       {/* Floating Particles */}
-      {Array.from({ length: 20 }).map((_, index) => (
+      {particlePositions.map((particle, index) => (
         <motion.div
           key={`particle-${index}`}
           className="absolute w-1 h-1 bg-primary-400/20 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [0, -100, 0],
@@ -56,8 +65,8 @@ export default function FloatingElements() {
             scale: [0, 1, 0],
           }}
           transition={{
-            duration: Math.random() * 3 + 2,
-            delay: Math.random() * 5,
+            duration: particle.duration,
+            delay: particle.delay,
             repeat: Infinity,
             ease: "easeInOut"
           }}

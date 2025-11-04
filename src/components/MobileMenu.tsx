@@ -9,6 +9,7 @@ const menuItems = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Blog', href: '#blog' },
   { name: 'Contact', href: '#contact' },
 ]
 
@@ -22,8 +23,9 @@ export default function MobileMenu() {
       {/* Menu Button */}
       <motion.button
         onClick={toggleMenu}
-        className="relative z-50 p-2 text-slate-700 dark:text-slate-300"
+        className="relative z-50 p-2 text-primary dark:text-secondary hover:text-primary/80 dark:hover:text-secondary/80 transition-colors"
         whileTap={{ scale: 0.95 }}
+        aria-label="Toggle menu"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -34,7 +36,7 @@ export default function MobileMenu() {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <X className="w-6 h-6" />
+              <X className="w-7 h-7" />
             </motion.div>
           ) : (
             <motion.div
@@ -44,7 +46,7 @@ export default function MobileMenu() {
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-7 h-7" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -70,12 +72,12 @@ export default function MobileMenu() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 h-full w-80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-l border-slate-200 dark:border-slate-700 z-40"
+              className="fixed top-0 right-0 h-full w-full sm:w-80 bg-white dark:bg-primary backdrop-blur-xl border-l border-slate-200 dark:border-secondary/30 z-40 shadow-2xl"
             >
-              <div className="flex flex-col h-full pt-20 px-6">
+              <div className="flex flex-col h-full pt-20 px-8">
                 {/* Menu Items */}
                 <nav className="flex-1">
-                  <ul className="space-y-6">
+                  <ul className="space-y-8">
                     {menuItems.map((item, index) => (
                       <motion.li
                         key={item.name}
@@ -86,7 +88,7 @@ export default function MobileMenu() {
                         <Link
                           href={item.href}
                           onClick={toggleMenu}
-                          className="block text-2xl font-semibold text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                          className="block text-3xl font-bold text-primary dark:text-secondary hover:text-primary/70 dark:hover:text-secondary/70 transition-colors"
                         >
                           {item.name}
                         </Link>
@@ -99,10 +101,10 @@ export default function MobileMenu() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="pb-8"
+                  transition={{ delay: 0.8 }}
+                  className="pb-8 border-t border-slate-200 dark:border-secondary/20 pt-6"
                 >
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <p className="text-sm text-slate-600 dark:text-secondary/70 font-medium">
                     © 2025 Mpho Mofokeng
                   </p>
                 </motion.div>

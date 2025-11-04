@@ -317,32 +317,6 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Scroll Indicator */}
-      {/* <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 2.6 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-      >
-        <motion.div
-          animate={{
-            y: [0, 12, 0],
-            opacity: [0.5, 1, 0.5]
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="flex flex-col items-center text-slate-500 dark:text-slate-400"
-        >
-          <span className="text-sm mb-2 font-medium">Scroll to explore</span>
-          <div className="p-2 rounded-full border border-slate-300 dark:border-slate-600">
-            <ArrowDown className="w-5 h-5" />
-          </div>
-        </motion.div>
-      </motion.div> */}
-
       {/* About Section */}
       <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto">
@@ -843,11 +817,6 @@ export default function Home() {
           </p>
           <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">
             Built with Next.js, TypeScript, and Tailwind CSS
-          </p>
-          <p className="text-xs text-slate-400 dark:text-slate-600 mt-4">
-            <a href="/admin" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-              Admin
-            </a>
           </p>
         </div>
       </footer>

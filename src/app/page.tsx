@@ -186,8 +186,8 @@ export default function Home() {
               <TypewriterText
                 texts={[
                   "Student Performance Manager & QA Elective Lead",
-                  "Blockchain Enthusiast & Mentor",
-                  "WeThinkCode_ Educator",
+                  "Blockchain Enthusiast",
+                  "WeThinkCode_ Facilitator",
                   "Quality-Driven Technologist"
                 ]}
                 className="text-2xl md:text-4xl text-slate-700 dark:text-secondary-200 font-semibold"

@@ -5,8 +5,9 @@ import { BookOpen, Search, Filter } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import BlogCard from '@/components/BlogCard'
-import { blogCategories, getBlogPosts } from '@/data/blog-posts'
+import { blogCategories } from '@/data/blog-posts'
 import { BlogPost } from '@/types/blog'
+import { getAllPosts } from '@/lib/supabase-blog'
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
@@ -14,8 +15,18 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([])
 
   useEffect(() => {
-    // Load posts from localStorage
-    setPosts(getBlogPosts())
+    // Load posts from Supabase
+    const loadPosts = async () => {
+      const { data, error } = await getAllPosts(false) // Only published posts
+      if (error) {
+        console.error('Error loading posts:', error)
+        return
+      }
+      if (data) {
+        setPosts(data)
+      }
+    }
+    loadPosts()
   }, [])
 
   const filteredPosts = posts.filter(post => {

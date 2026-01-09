@@ -19,7 +19,7 @@ export default function BlogEditor({ post, onSave, onCancel }: BlogEditorProps) 
     content: post?.content || '',
     author: post?.author || 'Mpho Mofokeng',
     date: post?.date || new Date().toISOString().split('T')[0],
-    readTime: post?.readTime || '5 min read',
+    read_time: post?.read_time || '5 min read',
     category: post?.category || 'Quality Assurance',
     tags: post?.tags?.join(', ') || '',
     published: post?.published ?? false
@@ -36,12 +36,12 @@ export default function BlogEditor({ post, onSave, onCancel }: BlogEditorProps) 
 
     // Calculate read time based on content length
     const wordCount = formData.content.split(/\s+/).length
-    const readTime = `${Math.ceil(wordCount / 200)} min read`
+    const read_time = `${Math.ceil(wordCount / 200)} min read`
 
     onSave({
       ...formData,
       slug,
-      readTime,
+      read_time,
       tags: formData.tags.split(',').map(tag => tag.trim()).filter(Boolean)
     })
   }

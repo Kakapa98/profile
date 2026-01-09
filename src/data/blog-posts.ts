@@ -33,7 +33,9 @@ export const blogCategories: BlogCategory[] = [
   }
 ]
 
-// Helper functions to get posts from localStorage
+// Legacy helper functions for localStorage (kept for backward compatibility)
+// Note: The app now uses Supabase, but these are kept for migration purposes
+
 export const getBlogPosts = (): BlogPost[] => {
   if (typeof window === 'undefined') return []
   const storedPosts = localStorage.getItem('blog_posts')
@@ -48,27 +50,9 @@ export const getBlogPosts = (): BlogPost[] => {
   return []
 }
 
-// Helper function to get posts by category
-export const getPostsByCategory = (category: string): BlogPost[] => {
-  const posts = getBlogPosts()
-  return posts.filter(post =>
-    post.category.toLowerCase() === category.toLowerCase() && post.published
-  )
-}
-
-// Helper function to get recent posts
-export const getRecentPosts = (limit: number = 3): BlogPost[] => {
-  const posts = getBlogPosts()
-  return posts
-    .filter(post => post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, limit)
-}
-
-// Helper function to get post by slug
-export const getPostBySlug = (slug: string): BlogPost | undefined => {
-  const posts = getBlogPosts()
-  return posts.find(post => post.slug === slug && post.published)
+// Helper to migrate localStorage posts to Supabase
+export const getLocalStoragePosts = (): BlogPost[] => {
+  return getBlogPosts()
 }
 
 // For static generation, we need to export an empty array initially

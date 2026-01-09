@@ -83,7 +83,7 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
             </div>
             <div className="flex items-center gap-1">
               <Clock className="w-4 h-4" />
-              <span>{post.readTime}</span>
+              <span>{post.read_time}</span>
             </div>
           </div>
         </div>

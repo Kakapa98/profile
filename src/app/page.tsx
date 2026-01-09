@@ -11,16 +11,30 @@ import ParticleSystem from '@/components/ParticleSystem'
 import MobileMenu from '@/components/MobileMenu'
 import BlogCard from '@/components/BlogCard'
 import { ThemeToggle } from '@/components/ThemeToggle'
-import { getRecentPosts } from '@/data/blog-posts'
 import { BlogPost } from '@/types/blog'
+import { getAllPosts } from '@/lib/supabase-blog'
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [recentPosts, setRecentPosts] = useState<BlogPost[]>([])
 
   useEffect(() => {
-    // Load recent posts from localStorage
-    setRecentPosts(getRecentPosts(3))
+    // Load recent posts from Supabase
+    const loadRecentPosts = async () => {
+      const { data, error } = await getAllPosts(false) // Only published
+      if (error) {
+        console.error('Error loading recent posts:', error)
+        return
+      }
+      if (data) {
+        // Get 3 most recent posts
+        const recent = data
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          .slice(0, 3)
+        setRecentPosts(recent)
+      }
+    }
+    loadRecentPosts()
   }, [])
   const { scrollYProgress } = useScroll({
     target: containerRef,

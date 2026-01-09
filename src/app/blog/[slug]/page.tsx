@@ -1,4 +1,4 @@
-import { getPostBySlug } from '@/data/blog-posts'
+import { getPostBySlug } from '@/lib/supabase-blog'
 import { notFound } from 'next/navigation'
 import BlogPostClient from './BlogPostClient'
 
@@ -10,9 +10,9 @@ interface BlogPostPageProps {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const { data: post, error } = await getPostBySlug(slug)
 
-  if (!post) {
+  if (error || !post) {
     notFound()
   }
 
